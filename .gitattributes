@@ -1,0 +1,28 @@
+# Force LF line endings for all text files.
+# Bash scripts MUST be LF or they fail under WSL/Linux ("\r: command not found").
+# Python and YAML are also normalized to LF for cross-platform consistency.
+
+* text=auto eol=lf
+
+# Explicit overrides
+*.sh    text eol=lf
+*.bash  text eol=lf
+*.py    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.toml  text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+*.csv   text eol=lf
+*.json  text eol=lf
+
+# PowerShell on Windows can handle either; let it be CRLF on Windows checkouts
+*.ps1   text eol=crlf
+
+# Binary files
+*.png   binary
+*.jpg   binary
+*.npy   binary
+*.npz   binary
+*.mat   binary
+*.gz    binary

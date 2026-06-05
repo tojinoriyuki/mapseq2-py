@@ -1,0 +1,57 @@
+project:
+  name: DAT-1
+  output_dir: ./out
+
+input:
+  raw_fastq_dir: ./raw
+  r1_pattern: "{prefix}-{sample_id}_*_L*_R1_001.fastq.gz"
+  r2_pattern: "{prefix}-{sample_id}_*_L*_R2_001.fastq.gz"
+  sample_sheet: ./sample_sheet.csv
+
+barcode:
+  barcode_length: 32
+  umi_length: 12
+  ssi_length: 8
+  ssi_match_length: 8
+
+library_filter:
+  enabled: true
+  regex: '^(.{30}[TC][TC]|.{29}[TC][TC]G)'
+
+spike_in:
+  tag_sequence: CGTCAGTC
+
+bowtie2:
+  N: 1
+  L: 16
+  D: 20
+  R: 3
+  i: "S,1,1.15"
+  score_min_local: "L,0,-0.7"
+  score_min_global: "L,0,-0.6"
+  threads: 36
+  extra_flags: ["-a"]
+
+filtering:
+  source_threshold_umi: 20
+  proj_threshold_umi: 10
+  cell_body_threshold: null
+
+quality_filter:
+  homopolymer_min_run: 7   # drop barcodes with >=7bp consecutive same-base run; 0/1 disables
+
+normalization:
+  method: rowsum_log_scale
+  log_factor: 100
+  spike_method: unique_count   # Hyopil normBCmat2.m (size(counts2u,1)); set to "umi_sum" for original Kebschull MAPseq
+
+clustering:
+  method: ward
+  metric: euclidean
+  num_clusters: 5
+  cluster_labels:
+    4: ITi
+    3: "IT Str-"
+    5: "IT Str+"
+    1: ET
+    2: CT

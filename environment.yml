@@ -1,0 +1,31 @@
+name: mapseq
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.10,<3.13
+  - pip
+
+  # bioinformatics tools used by the bash preprocess + CC stages
+  - bowtie2>=2.4
+  - pigz
+  - samtools  # optional, for inspecting intermediate SAMs
+
+  # core scientific stack (faster from conda than pip)
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - h5py  # used by tests/validate_real_data.py to read Hyopil's .mat
+  - tqdm
+  - pyyaml
+  - click
+  - networkx
+  - biopython
+
+  # install mapseq2-py itself from the project directory
+  - pip:
+      - -e .

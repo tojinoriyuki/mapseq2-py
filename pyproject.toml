@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mapseq2-py"
+version = "0.1.0"
+description = "Config-driven Python port of Hyopil Kim's MAPseq2 pipeline (bowtie2 + YY filter + local/global collapse)"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "networkx",
+    "biopython",
+    "pyyaml",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn",
+    "click",
+    "tqdm",
+]
+
+[project.scripts]
+mapseq2 = "mapseq2.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mapseq2*"]

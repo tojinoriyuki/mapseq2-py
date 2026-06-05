@@ -1,0 +1,65 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Virtual envs / conda ---
+.venv/
+venv/
+env/
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Pipeline outputs (must never be committed) ---
+# raw sequencing data
+raw/
+*.fastq
+*.fastq.gz
+*.fq.gz
+
+# pipeline stage outputs
+out/
+out_*/
+**/01_preprocess/
+**/02_local_collapse/
+**/03_global_collapse/
+**/04_matrix/
+**/05_filtered/
+**/06_cluster/
+
+# per-experiment configs (users supply their own)
+*.yaml
+*.yml
+!environment.yml
+!configs/example_config.yaml
+sample_sheet.csv
+!configs/example_samplesheet.csv
+!configs/samplesheet_mapseq2-1.csv
+!configs/samplesheet_mapseq2-2.csv
+
+# scratch / temp
+scratch*/
+tmp/
+*.log
+*.tmp
+*.bak
+*~
+
+# Hyopil .mat reference files (not redistributable; users fetch from his repo)
+*.mat
+
+# tests fixtures that should be regenerated
+tests/_*_work/
