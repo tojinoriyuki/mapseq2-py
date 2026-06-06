@@ -23,14 +23,14 @@ on filter + cluster stages).
 
 ```bash
 # Linux / WSL2 / macOS
-git clone https://github.com/<your-username>/mapseq2-py.git
+git clone https://github.com/tojinoriyuki/mapseq2-py.git
 cd mapseq2-py
 bash install.sh
 ```
 
 ```powershell
 # Windows (PowerShell; assumes WSL2 + Ubuntu)
-git clone https://github.com/<your-username>/mapseq2-py.git
+git clone https://github.com/tojinoriyuki/mapseq2-py.git
 cd mapseq2-py
 .\install.ps1
 ```
